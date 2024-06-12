@@ -1,0 +1,2 @@
+hello world!
+This is a test to see if this file will be overwritten by initializing a git repo here :)
