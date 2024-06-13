@@ -213,8 +213,8 @@ for year in years:
             Downscaled_P[hourly_indices[0][i],:,:] = Pdownscaled
         
     # Save downscaled T/P as netcdf
-    save_to_netcdf(Downscaled_P, 'Precipitation', Downscaled_P_file, year, Xgrid, Ygrid) 
-    save_to_netcdf(Downscaled_T, 'Temperature', Downscaled_T_file, year, Xgrid, Ygrid)        
+    save_to_netcdf(Downscaled_P, 'Precipitation', Downscaled_P_file, year, Xgrid, Ygrid,3) 
+    save_to_netcdf(Downscaled_T, 'Temperature', Downscaled_T_file, year, Xgrid, Ygrid,3)        
  
     inH.close()
     inP.close()
