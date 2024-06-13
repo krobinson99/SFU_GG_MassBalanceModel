@@ -1,0 +1,6 @@
+module load StdEnv/2020
+module load python scipy-stack
+source Kaskawulsh/bin/activate
+module load netcdf/4.7.4
+module load mpi4py
+module load cdo
