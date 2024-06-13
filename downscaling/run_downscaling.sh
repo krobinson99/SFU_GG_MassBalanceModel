@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=1:00:00
+#SBATCH --time=72:00:00
 #SBATCH --account=def-gflowers
 #SBATCH --mem=8G
 #SBATCH -o downscale-%A_%a.out
