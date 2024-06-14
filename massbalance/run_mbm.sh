@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=4:00:00
+#SBATCH --time=3:00:00
 #SBATCH --account=def-gflowers
 #SBATCH --mem=40G
 #SBATCH -o mbm-%A_%a.out
