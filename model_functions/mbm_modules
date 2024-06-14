@@ -3,3 +3,4 @@ module load python scipy-stack
 module load mpi4py
 module load cdo
 module load netcdf/4.9.0
+pip install sklearn
