@@ -57,7 +57,7 @@ for file in os.listdir(path_to_obs_snowlines):
 def plotmodelsnowline(timestamp):
     snow = snow_depth[np.where(snow_depth_dates==timestamp)[0][0]]
     plt.figure(figsize=(7,5))
-    plt.contourf(Xgrid,np.flipud(Ygrid),snow,cmap='BuPu',levels=np.linspace(0,1.5,16))
+    plt.contourf(snow,cmap='BuPu',levels=np.linspace(0,1.5,16))
     plt.axis('equal')
     legend = plt.colorbar()
     legend.ax.set_ylabel('Accumulation (m w.e. a$^{-1}$)', rotation=270,fontsize=14,labelpad=25)
