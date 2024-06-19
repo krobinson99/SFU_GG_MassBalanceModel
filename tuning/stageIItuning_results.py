@@ -326,7 +326,7 @@ plt.ylim(0,65)
 plt.plot(x, p/np.max(p)*9.6, 'k', linewidth=4,zorder=30,label='Target distribution')
 fig.legend(fontsize=12,ncol=1,bbox_to_anchor=(0.98,0.88))
 plt.tight_layout()
-plt.savefig('Param_selection_from_MB_distribution.pdf',bbox_inches='tight')
+plt.savefig(os.path.join(output_stageII_params,'Param_selection_from_MB_distribution.pdf'),bbox_inches='tight')
 
 # =============================================================================
 # Scatter plot of modelled mass bal vs snowline score (fig 5.4 from KR thesis)
@@ -346,7 +346,7 @@ plt.xlim(0.8,0.88)
 plt.grid()
 fig.legend(fontsize=14,bbox_to_anchor=(1.5,0.94))
 plt.tight_layout()
-plt.savefig('mb_vs_snowlinescore_scatterplot.pdf',bbox_inches='tight')
+plt.savefig(os.path.join(output_stageII_params,'mb_vs_snowlinescore_scatterplot.pdf'),bbox_inches='tight')
 
 
 # =============================================================================
@@ -487,7 +487,7 @@ if compare_alt_model_params == True:
     fig.legend(fontsize=10,ncol=2,bbox_to_anchor=(0.97,0.94),loc='lower right')
 
     fig.tight_layout()
-    fig.savefig('all_models_tuned_params.pdf',bbox_inches='tight')
+    fig.savefig(os.path.join(output_stageII_params,'all_models_tuned_params.pdf'),bbox_inches='tight')
 
 else:
     pass
