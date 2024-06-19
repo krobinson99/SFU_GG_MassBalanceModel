@@ -32,7 +32,7 @@ import os
 model_name = 'REF_MODEL' # string assigned to this run of the model to help keep track of results
 params_file = '/home/krobin/projects/def-gflowers/krobin/MBM/Kaskawulsh/meltmodel_params/tuning_params_0-9999.csv' # Path to csv file containing aice, asnow, MF used for tuning
 modelled_mb = '/home/krobin/projects/def-gflowers/krobin/MBM/Kaskawulsh/tuning_results/refmodel_mb_sim_0-9999.csv' #  csv file containing the net mb for each sim (calculated using calulate_mb.py)
-output_stage1_params = '/home/krobin/projects/def-gflowers/krobin/MBM/Kaskawulsh/tuning_results' # directory where params that pass stage 1 should be stored
+output_stage1_params = '/home/krobin/projects/def-gflowers/krobin/MBM/Kaskawulsh/tuning_results/stageI' # directory where params that pass stage 1 should be stored
 
 # optional: compare with modelled mb's from the alternative debris and accumulation tests (Robinson et al. 2024)
 compare_alt_debris_models = True
