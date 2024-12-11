@@ -17,7 +17,7 @@ saved in the correct format needed for plotting.
 
 import numpy as np
 
-from plotting_functions_Manuscript1 import process_model_timeseries, save_timeseries, \
+from plotting_functions import process_model_timeseries, save_timeseries, \
 process_model_distributed_fields, save_distributed_fields
 
 # =============================================================================
