@@ -4,45 +4,7 @@ The distributed mass-balance model in this repository is adapted from Young et a
 
 Robinson, K. (2024). Reconstructing a multi-decadal runoff record for a highly-glacierized catchment in Yukon, Canada. MSc thesis. https://summit.sfu.ca/item/38185
 
-The model calculates the distributed surface mass balance $\dot{b}(x,y)$ as
-\begin{equation}
-    \label{massbalance}
-    \dot{b}(x,y) = \dot{c}(x,y) - \dot{a}(x,y),
-\end{equation}
-where $\dot{c}(x,y)$ is the distributed surface accumulation and $\dot{a}(x,y)$ is the distributed surface ablation. Ablation is approximated as the difference between melt ($M$) and meltwater that refreezes to form superimposed ice ($R$). Melt is calculated using the enhanced temperature-index model of \citet{hock_distributed_1999}, 
-\begin{equation}
-\label{eq:TIM}
-  M =
-  \begin{cases}
-    (MF + a_{\rm snow/ice}I)T & \text{if $T>0\degree\,C$} \\
-    0 & \text{if $T\leqslant0 \degree\,C$},
-  \end{cases}
-\end{equation}
-where T is air temperature and I is the potential direct clear-sky solar radiation (W\,m$^{-2}$). MF (m\,w.e.\,3hr$^{-1}$\,$\degree$C$^{-1}$), $a_{\rm snow}$ and $a_{\rm ice}$ (m\,w.e.\,3hr$^{-1}$\,$\degree$C$^{-1}$\,m$^2$\,W$^{-1}$) are, respectively, the melt factor and radiation factors for snow and ice that are empirically determined during the tuning process. 
+Model description summary: 
+The climatic mass balance $\dot{b}_{\rm sfc}(x,y)$ is calculated as the difference between surface accumulation $\dot{c}_{\rm sfc}(x,y)$ and surface ablation $\dot{a}_{\rm sfc}(x,y)$. Ablation is approximated as surface melt minus meltwater that is refrozen. Melt is calculated using the enhanced temperature-index model of \citet{hock_distributed_1999}, which improves upon the classical degree-day model by capturing the influence of topographic shading, slope, and aspect on melt through incorporating a radiation factor and calculated potential direct clear-sky solar radiation. The impact of supraglacial debris cover on ablation is treated using a distributed estimate of sub-debris melt factors, which either enhance or inhibit ice melt depending on the debris thickness. The sub-debris melt factors are based on an estimate of debris thickness for the Kaskawulsh Glacier from Rounce et al. (2021) and a glacier-specific estimate of the Oestrem curve Robinson et al. (2024), that is, a function that describes the relationship between debris thickness and ablation (Oestrem, 1959). Meltwater retention via refreezing is accounted for using a thermodynic parameterization to estimate the annual potential retention mass (Janssens, 2000). Once this limit is reached, any additional snowmelt or rainfall is assumed to run off. 
 
-The refreezing process is accounted for using a thermodynamic parameterization to estimate the total amount of liquid water (from snowmelt or rainfall) that can be retained by percolation and refreezing in the snowpack, hereafter referred to as the total potential retention mass P$_{\tau}$ \citep{janssens2000treatment}. This is equivalent to the maximum amount of superimposed ice that can form in a given year \citep{huybrechts1999dynamic}. For every hydrologic year (1 October--30 September)  in the study period, P$_{\tau}$ is approximated as a proportion ($P_r$) of the total annual precipitation in a given hydrological year ($P_{\rm annual}$): 
-\begin{equation}
-    \label{eq:refreeze}
-    P_r = \frac{c}{L}\rm |min(T_{mean},0)|\frac{d}{P_{mean}},
-\end{equation}
-where $c$ is the specific heat capacity of ice, $L$ is the latent heat of fusion, $T_{\rm mean}$ is the local mean annual air temperature for a given hydrological year, $P_{\rm mean}$ is the mean annual precipitation over the whole study period (1980--2022) measured in m\,w.e., and $d$ is a prescribed thickness of the thermal active layer, set to 2\,m \citep{janssens2000treatment,young_imbalancing_2021}. The maximum allowable value of the retention fraction $P_r$ is 1, therefore the maximum possible  potential retention mass P$_{\tau}$ is equal to the annual precipitation ($P_{\rm annual}$), since
-\begin{equation}
-    \label{eq:Ptau}
-    P_{\tau} = P_r\,P_{\rm annual}.
-\end{equation}
-While P$_{\tau}\,>\,0$, any melt that occurs is assumed to refreeze, therefore the maximum amount of refreezing that can occur is capped at P$_{\tau}$. Once the upper limit of P$_{\tau}$ has been reached, any additional snowmelt or rainfall is assumed to run off \citep{huybrechts1999dynamic,janssens2000treatment} until P$_{\tau}$ is renewed at the beginning of the next hydrological year. Therefore $R$ is related to the snowmelt ($M_{\rm snow}$) and P$_{\tau}$ in each gridcell and at each timestep by
-\begin{equation}
-\label{eq:refreezing}
-  R =
-  \begin{cases}
-    M_{\rm snow} & \text{if $P_{\tau}$\,$\geq$\,$M_{\rm snow}$} \\
-    P_{\tau} & \text{if 0\,$<$\,$P_{\tau}$\,$<$\,$M_{\rm snow}$} \\
-    0 & \text{if $P_{\tau}\,=\,0$}.
-  \end{cases}
-\end{equation}
-If the total refreezing $R\,<\,P_{\tau}$ for a given year, the remaining potential retention mass given by
-\begin{equation}
-    \label{eq:Ptau_remaining}
-    P_{\tau\,\,\rm remaining} = P_{\tau} - R
-\end{equation}
-is carried over to the following hydrological year. 
+Catchment-wide discharge is the sum of all sources of runoff over the glacierized and non-glacierized areas, including glacier-ice melt ($M_{\rm glacier\,\,ice}$), snowmelt ($M_{\rm snow}$), ice melt from the refrozen snowmelt/rain layers formed during previous refreezing events ($M_{\rm refrozen\,\,snowmelt/rain}$), and rainfall ($P_l$), minus the snowmelt and rainfall that are refrozen ($R$). Ice formed from refrozen snowmelt/rain is treated as superimposed ice in the ablation zone and internal accumulation in the accumulation zone. Snowmelt refers to melt of both the seasonal snowpack and snow accumulation that has persisted from previous seasons, as we do not account for the transition from snow to firn. Snowmelt, rainfall, and refreezing are treated the same over the non-glacierized area as the glacierized area of the catchment. We assume that all runoff instantaneously exits the catchment, that is, we do not account for transit times, supraglacial ponding, or englacial/subglacial storage, all of which would delay or reduce the estimated discharge. 
