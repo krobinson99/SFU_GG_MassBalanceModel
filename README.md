@@ -6,10 +6,9 @@ Robinson, K. (2024). Reconstructing a multi-decadal runoff record for a highly-g
 
 See also:
 
+Robinson, K. M., Flowers, G. E., & Rounce, D. R. (2025). Sensitivity of modelled mass balance and runoff to representations of debris and accumulation on the Kaskawulsh Glacier, Yukon, Canada. Journal of Glaciology, 71, e42. doi:10.1017/jog.2025.8
+
 Young, E. M., Flowers, G. E., Berthier, E., & Latto, R. (2021). An imbalancing act: the delayed dynamic response of the Kaskawulsh Glacier to sustained mass loss. Journal of Glaciology, 67(262), 313-330.
-
-Robinson, K. M., Flowers, G. E., & Rounce, D. R. (2024). Sensitivity of modelled mass balance and runoff to representations of debris and accumulation on the Kaskawulsh Glacier, Yukon, Canada.
-
 
 **Model description summary: **
 
